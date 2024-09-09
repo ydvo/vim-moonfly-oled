@@ -218,13 +218,13 @@ function! moonfly#Style() abort
     " Spelling errors
     if g:moonflyUndercurls
         exec 'highlight SpellBad ctermbg=NONE cterm=underline guibg=NONE gui=undercurl guisp=' . s:red
-        exec 'highlight SpellCap ctermbg=NONE cterm=underline guibg=NONE gui=undercurl guisp=' . s:blue
-        exec 'highlight SpellRare ctermbg=NONE cterm=underline guibg=NONE gui=undercurl guisp=' . s:yellow
+        exec 'highlight SpellCap ctermbg=NONE cterm=underline guibg=NONE gui=undercurl guisp=' . s:yellow
+        exec 'highlight SpellRare ctermbg=NONE cterm=underline guibg=NONE gui=undercurl guisp=' . s:green
         exec 'highlight SpellLocal ctermbg=NONE cterm=underline guibg=NONE gui=undercurl guisp=' . s:sky
     else
         exec 'highlight SpellBad ctermbg=NONE cterm=underline guibg=NONE guifg=' . s:red . ' gui=underline guisp=' . s:red
-        exec 'highlight SpellCap ctermbg=NONE cterm=underline guibg=NONE guifg=' . s:blue . ' gui=underline guisp=' . s:blue
-        exec 'highlight SpellRare ctermbg=NONE cterm=underline guibg=NONE guifg=' . s:yellow . ' gui=underline guisp=' . s:yellow
+        exec 'highlight SpellCap ctermbg=NONE cterm=underline guibg=NONE guifg=' . s:yellow . ' gui=underline guisp=' . s:yellow
+        exec 'highlight SpellRare ctermbg=NONE cterm=underline guibg=NONE guifg=' . s:green . ' gui=underline guisp=' . s:green
         exec 'highlight SpellLocal ctermbg=NONE cterm=underline guibg=NONE guifg=' . s:sky . ' gui=underline guisp=' . s:sky
     endif
 
@@ -253,7 +253,7 @@ function! moonfly#Style() abort
     endif
     highlight! link Ignore MoonflySky
     exec 'highlight Underlined guifg=' . s:emerald . ' gui=none'
-    exec 'highlight QuickFixLine guibg=' . s:grey23
+    exec 'highlight QuickFixLine guibg=' . s:grey15
     highlight! link Delimiter MoonflyWhite
     highlight! link qfFileName MoonflyEmerald
 
@@ -325,6 +325,17 @@ function! moonfly#Style() abort
     highlight! link sassIdChar MoonflyCranberry
     highlight! link sassMedia MoonflyViolet
     highlight! link scssSelectorName MoonflyEmerald
+
+    " CSV
+    highlight! link csvCol0 MoonflyRed
+    highlight! link csvCol1 MoonflyOrange
+    highlight! link csvCol2 MoonflyYellow
+    highlight! link csvCol3 MoonflyGreen
+    highlight! link csvCol4 MoonflyTurquoise
+    highlight! link csvCol5 MoonflyBlue
+    highlight! link csvCol6 MoonflyPurple
+    highlight! link csvCol7 MoonflyViolet
+    highlight! link csvCol8 MoonflyLavender
 
     " Dart
     highlight! link dartTypedef MoonflyViolet
@@ -441,6 +452,19 @@ function! moonfly#Style() abort
     highlight! link jsxComponentName MoonflyEmerald
     highlight! link jsxOpenPunct MoonflyLime
     highlight! link jsxTagName MoonflyBlue
+
+    " LaTeX
+    highlight! link texBeginEndName MoonflyEmerald
+    highlight! link texCite MoonflyGreen
+    highlight! link texDocType MoonflyCranberry
+    highlight! link texDocTypeArgs MoonflyOrchid
+    highlight! link texInputFile String
+    highlight! link texMathZoneC MoonflySky
+    highlight! link texMathZoneX MoonflySky
+    highlight! link texRefZone MoonflyGreen
+    highlight! link texSection MoonflyLavender
+    highlight! link texTypeStyle MoonflyYellow
+    highlight! link texZone MoonflyLavender
 
     " Lua
     highlight! link luaBraces MoonflyEmerald
@@ -648,6 +672,19 @@ function! moonfly#Style() abort
     " Plugin styling
     "-----------------------------------------------------------------------
 
+    " Coc
+    highlight! link CocSemTypeBuiltin MoonflyCranberry
+    highlight! link CocSemTypeClass MoonflyEmerald
+    highlight! link CocSemTypeEnumMember MoonflyTurquoise
+    highlight! link CocSemTypeNamespace MoonflyTurquoise
+    highlight! link CocSemTypeParameter MoonflyOrchid
+    highlight! link CocSemTypeProperty MoonflyLavender
+    highlight! link CocSemTypeRegexp MoonflyTurquoise
+    highlight! link CocSemTypeStruct MoonflyEmerald
+    highlight! link CocSemTypeTypeParameter MoonflyOrchid
+    highlight! link CocUnusedHighlight MoonflyGrey70
+    exec 'highlight CocInlayHint guibg=' . s:grey11 . ' guifg=' . s:grey58
+
     " Git commits
     highlight! link gitCommitBranch MoonflySky
     highlight! link gitCommitDiscardedFile MoonflyCrimson
@@ -784,27 +821,26 @@ function! moonfly#Style() abort
     highlight! link SignifySignDelete MoonflyRed
 
     " FZF plugin
-    exec 'highlight fzf1 guifg=' . s:crimson . ' guibg=' . s:grey18
-    exec 'highlight fzf2 guifg=' . s:blue . ' guibg=' . s:grey18
-    exec 'highlight fzf3 guifg=' . s:emerald . ' guibg=' . s:grey18
-    exec 'highlight fzfNormal guifg=' . s:grey70
-    exec 'highlight fzfFgPlus guifg=' . s:grey89
-    exec 'highlight fzfBorder guifg=' . s:grey18
-    exec 'highlight fzfSubstring guifg=' . s:coral
+    exec 'highlight FzfBorder guifg=' . s:grey18
+    exec 'highlight FzfFgPlus guifg=' . s:grey89
+    exec 'highlight FzfNormal guifg=' . s:grey70
+    exec 'highlight FzfPrompt guifg=' . s:blue . ' guibg=' . s:grey18
+    exec 'highlight FzfSubstring guifg=' . s:coral
     let g:fzf_colors = {
-      \  'fg':      ['fg', 'fzfNormal'],
+      \  'fg':      ['fg', 'FzfNormal'],
       \  'bg':      ['bg', 'Normal'],
-      \  'hl':      ['fg', 'fzfSubstring'],
-      \  'fg+':     ['fg', 'fzfFgPlus'],
+      \  'hl':      ['fg', 'FzfSubstring'],
+      \  'fg+':     ['fg', 'FzfFgPlus'],
       \  'bg+':     ['bg', 'Pmenu'],
-      \  'hl+':     ['fg', 'fzfSubstring'],
+      \  'hl+':     ['fg', 'FzfSubstring'],
       \  'info':    ['fg', 'String'],
-      \  'border':  ['fg', 'fzfBorder'],
-      \  'prompt':  ['fg', 'fzf2'],
+      \  'border':  ['fg', 'FzfBorder'],
+      \  'prompt':  ['fg', 'FzfPrompt'],
       \  'pointer': ['fg', 'Exception'],
-      \  'marker':  ['fg', 'StorageClass'],
+      \  'marker':  ['fg', 'FzfSubstring'],
       \  'spinner': ['fg', 'Type'],
-      \  'header':  ['fg', 'CursorLineNr']
+      \  'header':  ['fg', 'CursorLineNr'],
+      \  'gutter':  ['bg', 'Normal']
       \}
 
     " mistfly-statusline plugin

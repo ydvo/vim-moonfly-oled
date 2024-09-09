@@ -25,6 +25,7 @@ Neovim-only:
 - [Neovim LSP Semantic Highlights](https://neovim.io/doc/user/lsp.html#lsp-semantic-highlight)
 - [Barbar](https://github.com/romgrk/barbar.nvim)
 - [Dashboard](https://github.com/glepnir/dashboard-nvim)
+- [fzf.lua](https://github.com/ibhagwan/fzf-lua)
 - [Gitsigns](https://github.com/lewis6991/gitsigns.nvim)
 - [Hop](https://github.com/phaazon/hop.nvim)
 - [Indent BlankLine](https://github.com/lukas-reineke/indent-blankline.nvim)
@@ -40,6 +41,7 @@ Neovim-only:
 - [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui)
 - [nvim-navic](https://github.com/SmiteshP/nvim-navic)
 - [nvim-notify](https://github.com/rcarriga/nvim-notify)
+- [nvim-treesitter-context](https://github.com/nvim-treesitter/nvim-treesitter-context)
 - [NvCheatsheet.nvim](https://github.com/smartinellimarco/nvcheatsheet.nvim)
 - [NvimTree](https://github.com/kyazdani42/nvim-tree.lua)
 - [Rainbow Delimiters](https://github.com/HiPhish/rainbow-delimiters.nvim)
@@ -49,6 +51,7 @@ Neovim & Vim compatible:
 
 - [BufExplorer](https://github.com/jlanzarotta/bufexplorer)
 - [clever-f](https://github.com/rhysd/clever-f.vim)
+- [Coc.nvim](https://github.com/neoclide/coc.nvim)
 - [CtrlP](https://github.com/ctrlpvim/ctrlp.vim)
 - [Fern](https://github.com/lambdalisue/fern.vim)
 - [fzf.vim](https://github.com/junegunn/fzf.vim) (works best with matching [fly16](https://github.com/bluz71/fly16-bat) [bat](https://github.com/sharkdp/bat) theme)
@@ -401,6 +404,28 @@ vim.api.nvim_create_autocmd("ColorScheme", {
   end,
   group = custom_highlight,
 })
+```
+
+Palette & Custom Colors (Neovim Only)
+-------------------------------------
+
+The `palette` field returns a table of internal theme colors; useful for
+constructing custom statuslines and the like.
+
+```lua
+require("moonfly").palette
+```
+
+Meanwhile the `custom_colors` function allows customization of individual theme
+colors. This needs to occur prior to invoking the colorscheme. The full list of
+available colors is provided by the `palette` field.
+
+```lua
+  require("moonfly").custom_colors({
+    bg = "#121212",
+    violet = "#ff74b8",
+  })
+  vim.cmd([[colorscheme moonfly]])
 ```
 
 True Color Terminals

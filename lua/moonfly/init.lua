@@ -137,6 +137,7 @@ M.style = function()
   highlight(0, "MoonflyYellowMode", { bg = yellow, fg = grey11 })
   highlight(0, "MoonflyTurquoiseMode", { bg = turquoise, fg = grey11 })
   -- Generic line helper colors
+  highlight(0, "MoonflyCurrentLine", { bg = grey15 })
   highlight(0, "MoonflyCrimsonLine", { bg = grey18, fg = crimson })
   highlight(0, "MoonflyEmeraldLine", { bg = grey18, fg = emerald })
   highlight(0, "MoonflyGrey58Line", { bg = grey11, fg = grey58 })
@@ -272,20 +273,20 @@ M.style = function()
   -- Auto-text-completion menu
   highlight(0, "Pmenu", { bg = grey15, fg = white })
   highlight(0, "PmenuSel", { bg = spring, fg = grey89 })
-  highlight(0, "PmenuSbar", { bg = grey15 })
+  highlight(0, "PmenuSbar", { link = "MoonflyCurrentLine" })
   highlight(0, "PmenuThumb", { bg = grey50 })
   highlight(0, "WildMenu", { bg = spring, fg = grey89 })
 
   -- Spelling errors
   if g.moonflyUndercurls then
     highlight(0, "SpellBad", { bg = none, undercurl = true, sp = red })
-    highlight(0, "SpellCap", { bg = none, undercurl = true, sp = blue })
-    highlight(0, "SpellRare", { bg = none, undercurl = true, sp = yellow })
+    highlight(0, "SpellCap", { bg = none, undercurl = true, sp = yellow })
+    highlight(0, "SpellRare", { bg = none, undercurl = true, sp = green })
     highlight(0, "SpellLocal", { bg = none, undercurl = true, sp = sky })
   else
     highlight(0, "SpellBad", { bg = none, fg = red, underline = true, sp = red })
-    highlight(0, "SpellCap", { bg = none, fg = blue, underline = true, sp = blue })
-    highlight(0, "SpellRare", { bg = none, fg = yellow, underline = true, sp = yellow })
+    highlight(0, "SpellCap", { bg = none, fg = yellow, underline = true, sp = yellow })
+    highlight(0, "SpellRare", { bg = none, fg = green, underline = true, sp = green })
     highlight(0, "SpellLocal", { bg = none, fg = sky, underline = true, sp = sky })
   end
 
@@ -314,7 +315,7 @@ M.style = function()
   end
   highlight(0, "Ignore", { link = "MoonflySky" })
   highlight(0, "Underlined", { fg = emerald })
-  highlight(0, "QuickFixLine", { bg = grey23 })
+  highlight(0, "QuickFixLine", { link = "MoonflyCurrentLine" })
   highlight(0, "Delimiter", { link = "MoonflyWhite" })
   highlight(0, "qfFileName", { link = "MoonflyEmerald" })
 
@@ -342,6 +343,7 @@ M.style = function()
     highlight(0, "NormalFloat", { bg = grey11, fg = white })
   end
   highlight(0, "FloatBorder", { bg = bg, fg = grey18 })
+  highlight(0, "FloatTitle", { bg = grey23, fg = white })
   highlight(0, "WinBar", { bg = grey15, fg = white })
   highlight(0, "WinBarNC", { bg = grey15, fg = grey62 })
   highlight(0, "WinSeparator", { link = "VertSplit" })
@@ -378,7 +380,7 @@ M.style = function()
   highlight(0, "@keyword.operator", { link = "MoonflyViolet" })
   highlight(0, "@keyword.repeat", { link = "Repeat" })
   highlight(0, "@keyword.storage", { link = "StorageClass" })
-  highlight(0, "@markup.environment", { link = "MoonflyCranberry" })
+  highlight(0, "@markup.environment", { link = "MoonflyViolet" })
   highlight(0, "@markup.environment.name", { link = "MoonflyEmerald" })
   highlight(0, "@markup.heading", { link = "MoonflyViolet" })
   highlight(0, "@markup.italic", { fg = orchid, italic = true })
@@ -388,7 +390,7 @@ M.style = function()
   highlight(0, "@markup.list", { link = "MoonflyCranberry" })
   highlight(0, "@markup.list.checked", { link = "MoonflyTurquoise" })
   highlight(0, "@markup.list.unchecked", { link = "MoonflyBlue" })
-  highlight(0, "@markup.math", { link = "MoonflyCranberry" })
+  highlight(0, "@markup.math", { link = "MoonflySky" })
   highlight(0, "@markup.quote", { link = "MoonflyGrey58" })
   highlight(0, "@markup.raw", { link = "String" })
   highlight(0, "@markup.strikethrough", { strikethrough = true })
@@ -483,7 +485,9 @@ M.style = function()
     highlight(0, "@markup.link.url.svelte", { link = "MoonflyViolet" })
     highlight(0, "@markup.link.url.vue", { link = "MoonflyViolet" })
   end
+  highlight(0, "@markup.list.latex", { link = "MoonflyPurple" })
   highlight(0, "@markup.raw.vimdoc", { link = "MoonflyOrchid" })
+  highlight(0, "@namespace.latex", { link = "MoonflyLavender" })
   highlight(0, "@punctuation.delimiter.astro", { link = "MoonflyCranberry" })
   highlight(0, "@punctuation.delimiter.css", { link = "MoonflyCranberry" })
   highlight(0, "@punctuation.delimiter.rust", { link = "MoonflyCranberry" })
@@ -634,12 +638,43 @@ M.style = function()
   -- Legacy language styling
   -------------------------------------------------------------------------
 
+  -- CSV
+  highlight(0, "csvCol0", { link = "MoonflyRed" })
+  highlight(0, "csvCol1", { link = "MoonflyOrange" })
+  highlight(0, "csvCol2", { link = "MoonflyYellow" })
+  highlight(0, "csvCol3", { link = "MoonflyGreen" })
+  highlight(0, "csvCol4", { link = "MoonflyTurquoise" })
+  highlight(0, "csvCol5", { link = "MoonflyBlue" })
+  highlight(0, "csvCol6", { link = "MoonflyPurple" })
+  highlight(0, "csvCol7", { link = "MoonflyViolet" })
+  highlight(0, "csvCol8", { link = "MoonflyLavender" })
+
   -- Help
   highlight(0, "helpCommand", { link = "MoonflyOrchid" })
   highlight(0, "helpExample", { link = "MoonflyGreen" })
   highlight(0, "helpHeadline", { link = "MoonflyBlue" })
   highlight(0, "helpHyperTextEntry", { link = "MoonflyTurquoise" })
   highlight(0, "helpSectionDelim", { link = "MoonflyBlue" })
+
+  -- LaTeX
+  highlight(0, "texBeginEndName", { link = "MoonflyEmerald" })
+  highlight(0, "texCite", { link = "MoonflyGreen" })
+  highlight(0, "texDocType", { link = "MoonflyCranberry" })
+  highlight(0, "texDocTypeArgs", { link = "MoonflyOrchid" })
+  highlight(0, "texInputFile", { link = "String" })
+  highlight(0, "texMathZoneC", { link = "MoonflySky" })
+  highlight(0, "texMathZoneX", { link = "MoonflySky" })
+  highlight(0, "texRefZone", { link = "MoonflyGreen" })
+  highlight(0, "texSection", { link = "MoonflyLavender" })
+  highlight(0, "texTypeStyle", { link = "MoonflyYellow" })
+  highlight(0, "texZone", { link = "MoonflyLavender" })
+
+  -- Man
+  highlight(0, "manHeader", { link = "MoonflyEmerald" })
+  highlight(0, "manOptionDesc", { link = "MoonflyOrchid" })
+  highlight(0, "manReference", { link = "MoonflyGreen" })
+  highlight(0, "manSectionHeading", { link = "MoonflyBlue" })
+  highlight(0, "manSubHeading", { link = "MoonflyTurquoise" })
 
   -- Markdown, 'tpope/vim-markdown' plugin
   highlight(0, "markdownBold", { link = "MoonflyYellow" })
@@ -656,13 +691,6 @@ M.style = function()
     highlight(0, "markdownItalic", { link = "MoonflyOrchid" })
   end
   highlight(0, "markdownUrl", { link = "MoonflyPurple" })
-
-  -- Man
-  highlight(0, "manHeader", { link = "MoonflyEmerald" })
-  highlight(0, "manOptionDesc", { link = "MoonflyOrchid" })
-  highlight(0, "manReference", { link = "MoonflyGreen" })
-  highlight(0, "manSectionHeading", { link = "MoonflyBlue" })
-  highlight(0, "manSubHeading", { link = "MoonflyTurquoise" })
 
   -- Markdown, 'plasticboy/vim-markdown' plugin
   highlight(0, "mkdDelimiter", { link = "MoonflyWhite" })
@@ -767,27 +795,26 @@ M.style = function()
   highlight(0, "fishVariable", { link = "MoonflyTurquoise" })
 
   -- FZF plugin
-  highlight(0, "fzf1", { fg = crimson, bg = grey18 })
-  highlight(0, "fzf2", { fg = blue, bg = grey18 })
-  highlight(0, "fzf3", { fg = emerald, bg = grey18 })
-  highlight(0, "fzfNormal", { fg = grey70 })
-  highlight(0, "fzfFgPlus", { fg = grey89 })
-  highlight(0, "fzfBorder", { fg = grey18 })
-  highlight(0, "fzfSubstring", { fg = coral })
+  highlight(0, "FzfBorder", { fg = grey18 })
+  highlight(0, "FzfFgPlus", { fg = grey89 })
+  highlight(0, "FzfNormal", { fg = grey70 })
+  highlight(0, "FzfPrompt", { fg = blue, bg = grey18 })
+  highlight(0, "FzfSubstring", { fg = coral })
   g.fzf_colors = {
-    ["fg"] = { "fg", "fzfNormal" },
+    ["fg"] = { "fg", "FzfNormal" },
     ["bg"] = { "bg", "Normal" },
-    ["hl"] = { "fg", "fzfSubstring" },
-    ["fg+"] = { "fg", "fzfFgPlus" },
+    ["hl"] = { "fg", "FzfSubstring" },
+    ["fg+"] = { "fg", "FzfFgPlus" },
     ["bg+"] = { "bg", "Pmenu" },
-    ["hl+"] = { "fg", "fzfSubstring" },
+    ["hl+"] = { "fg", "FzfSubstring" },
     ["info"] = { "fg", "String" },
-    ["border"] = { "fg", "fzfBorder" },
-    ["prompt"] = { "fg", "fzf2" },
+    ["border"] = { "fg", "FzfBorder" },
+    ["prompt"] = { "fg", "FzfPrompt" },
     ["pointer"] = { "fg", "Exception" },
-    ["marker"] = { "fg", "StorageClass" },
+    ["marker"] = { "fg", "FzfSubstring" },
     ["spinner"] = { "fg", "Type" },
     ["header"] = { "fg", "CursorLineNr" },
+    ["gutter"] = { "bg", "Normal" },
   }
 
   -- mistfly-statusline plugin
@@ -798,12 +825,25 @@ M.style = function()
   highlight(0, "MistflyReplace", { link = "MoonflyCrimsonMode" })
 
   -- Coc plugin
-  highlight(0, "CocUnusedHighlight", { link = "MoonflyGrey70" })
   highlight(0, "CocInlayHint", { link = "LspInlayHint" })
+  highlight(0, "CocSemTypeBuiltin", { link = "MoonflyCranberry" })
+  highlight(0, "CocSemTypeClass", { link = "MoonflyEmerald" })
+  highlight(0, "CocSemTypeEnumMember", { link = "MoonflyTurquoise" })
+  highlight(0, "CocSemTypeNamespace", { link = "MoonflyTurquoise" })
+  highlight(0, "CocSemTypeParameter", { link = "MoonflyOrchid" })
+  highlight(0, "CocSemTypeProperty", { link = "MoonflyLavender" })
+  highlight(0, "CocSemTypeRegexp", { link = "MoonflyTurquoise" })
+  highlight(0, "CocSemTypeStruct", { link = "MoonflyEmerald" })
+  highlight(0, "CocSemTypeTypeParameter", { link = "MoonflyOrchid" })
+  highlight(0, "CocUnusedHighlight", { link = "MoonflyGrey70" })
 
   -------------------------------------------------------------------------
   -- Neovim plugin styling
   -------------------------------------------------------------------------
+
+  -- nvim-treesitter-context
+  highlight(0, "TreesitterContext", { bg = grey7 })
+  highlight(0, "TreesitterContextBottom", { underline = true, sp = grey18 })
 
   -- NvimTree plugin
   highlight(0, "NvimTreeFolderIcon", { link = "MoonflyGrey58" })
@@ -813,7 +853,7 @@ M.style = function()
   highlight(0, "NvimTreeRootFolder", { link = "MoonflyPurple" })
   highlight(0, "NvimTreeSpecialFile", { link = "MoonflyYellow" })
   highlight(0, "NvimTreeWindowPicker", { link = "DiffChange" })
-  highlight(0, "NvimTreeCursorLine", { bg = grey15 })
+  highlight(0, "NvimTreeCursorLine", { link = "MoonflyCurrentLine" })
   highlight(0, "NvimTreeExecFile", { fg = green })
   highlight(0, "NvimTreeImageFile", { fg = violet })
   if g.moonflyTransparent ~= true and g.moonflyNormalFloat ~= true then
@@ -823,11 +863,11 @@ M.style = function()
   highlight(0, "NvimTreeSymlink", { fg = turquoise })
 
   -- Neo-tree plugin
-  highlight(0, "NeoTreeCursorLine", { bg = grey15 })
+  highlight(0, "NeoTreeCursorLine", { link = "MoonflyCurrentLine" })
   highlight(0, "NeoTreeDimText", { link = "MoonflyGrey30" })
   highlight(0, "NeoTreeDirectoryIcon", { link = "MoonflyGrey58" })
   highlight(0, "NeoTreeDotfile", { link = "MoonflyGrey58" })
-  highlight(0, "NeoTreeFloatTitle", { bg = grey18, fg = white })
+  highlight(0, "NeoTreeFloatTitle", { link = "FloatTitle" })
   highlight(0, "NeoTreeFilterTerm", { link = "MoonflyBlue" })
   highlight(0, "NeoTreeGitAdded", { link = "MoonflyGreen" })
   highlight(0, "NeoTreeGitConflict", { link = "MoonflyCrimson" })
@@ -864,12 +904,19 @@ M.style = function()
   -- gitsigns.nvim plugin
   --   sign column
   highlight(0, "GitSignsAdd", { link = "MoonflyEmerald" })
+  highlight(0, "GitSignsAddCul", { link = "TablineSelSymbol" })
   highlight(0, "GitSignsChange", { link = "MoonflySky" })
-  highlight(0, "GitSignsChangeDelete", { link = "MoonflyCoral" })
+  highlight(0, "GitSignsChangeCul", { bg = grey11, fg = sky })
+  highlight(0, "GitSignsChangedelete", { link = "MoonflyCoral" })
+  highlight(0, "GitSignsChangedeleteCul", { bg = grey11, fg = coral })
   highlight(0, "GitSignsDelete", { link = "MoonflyRed" })
+  highlight(0, "GitSignsDeleteCul", { bg = grey11, fg = red })
+  highlight(0, "GitSignsTopdelete", { link = "MoonflyRed" })
+  highlight(0, "GitSignsTopdeleteCul", { link = "GitSignsDeleteCul" })
   highlight(0, "GitSignsUntracked", { link = "MoonflyGrey39" })
+  highlight(0, "GitSignsUntrackedCul", { bg = grey11, fg = grey39 })
   --   line highlights
-  highlight(0, "GitSignsAddLn", { bg = grey15 })
+  highlight(0, "GitSignsAddLn", { link = "MoonflyCurrentLine" })
   highlight(0, "GitSignsChangeLn", { bg = grey11 })
   --   word diff
   highlight(0, "GitSignsAddLnInline", { bg = grey1 })
@@ -904,7 +951,7 @@ M.style = function()
   highlight(0, "BufferVisibleIndex", { link = "MoonflyGrey58Line" })
   highlight(0, "BufferVisibleMod", { link = "MoonflyYellowLine" })
   highlight(0, "BufferVisibleSign", { link = "MoonflyGrey58Line" })
-  highlight(0, "BufferVisibleERROR", { bg = grey11, fg = red })
+  highlight(0, "BufferVisibleERROR", { link = "GitSignsDeleteCul" })
   highlight(0, "BufferVisibleWARN", { bg = grey11, fg = yellow })
   highlight(0, "BufferVisibleINFO", { bg = grey11, fg = blue })
   highlight(0, "BufferVisibleHINT", { bg = grey11, fg = turquoise })
@@ -913,7 +960,7 @@ M.style = function()
   highlight(0, "BufferInactiveSign", { bg = grey18, fg = grey62 })
   highlight(0, "BufferInactiveERROR", { bg = grey18, fg = red })
   highlight(0, "BufferInactiveWARN", { bg = grey18, fg = yellow })
-  highlight(0, "BufferInactiveINFO", { bg = grey18, fg = blue })
+  highlight(0, "BufferInactiveINFO", { link = "BufferTabpages" })
   highlight(0, "BufferInactiveHINT", { bg = grey18, fg = turquoise })
   highlight(0, "BufferAlternate", { link = "BufferCurrent" })
   highlight(0, "BufferAlternateIndex", { link = "BufferCurrentIndex" })
@@ -969,12 +1016,76 @@ M.style = function()
   highlight(0, "IndentBlanklineSpaceCharBlankline", { link = "IblWhitespace" })
 
   -- Mini.nvim plugin
+  highlight(0, "MiniAnimateNormalFloat", { link = "NormalFloat" })
+  highlight(0, "MiniClueBorder", { link = "FloatBorder" })
+  highlight(0, "MiniClueDescGroup", { link = "DiagnosticFloatingWarn" })
+  highlight(0, "MiniClueDescSingle", { link = "NormalFloat" })
+  highlight(0, "MiniClueNextKey", { link = "DiagnosticFloatingHint" })
+  highlight(0, "MiniClueNextKeyWithPostkeys", { link = "DiagnosticFloatingError" })
+  highlight(0, "MiniClueSeparator", { link = "DiagnosticFloatingInfo" })
+  highlight(0, "MiniClueTitle", { link = "FloatTitle" })
   highlight(0, "MiniCompletionActiveParameter", { link = "MoonflyVisual" })
   highlight(0, "MiniCursorword", { link = "MoonflyUnderline" })
   highlight(0, "MiniCursorwordCurrent", { link = "MoonflyUnderline" })
+  highlight(0, "MiniDepsChangeAdded", { link = "diffAdded" })
+  highlight(0, "MiniDepsChangeRemoved", { link = "diffRemoved" })
+  highlight(0, "MiniDepsHint", { link = "DiagnosticHint" })
+  highlight(0, "MiniDepsInfo", { link = "DiagnosticInfo" })
+  highlight(0, "MiniDepsMsgBreaking", { link = "DiagnosticWarn" })
+  highlight(0, "MiniDepsPlaceholder", { link = "Comment" })
+  highlight(0, "MiniDepsTitle", { link = "Title" })
+  highlight(0, "MiniDepsTitleError", { link = "MoonflyCrimsonLine" })
+  highlight(0, "MiniDepsTitleSame", { link = "DiffText" })
+  highlight(0, "MiniDepsTitleUpdate", { link = "DiffAdd" })
+  highlight(0, "MiniDiffOverAdd", { link = "DiffAdd" })
+  highlight(0, "MiniDiffOverChange", { link = "DiffText" })
+  highlight(0, "MiniDiffOverContext", { link = "DiffChange" })
+  highlight(0, "MiniDiffOverDelete", { link = "MoonflyCrimsonLine" })
+  highlight(0, "MiniDiffSignAdd", { link = "MoonflyEmerald" })
+  highlight(0, "MiniDiffSignChange", { link = "MoonflySky" })
+  highlight(0, "MiniDiffSignDelete", { link = "MoonflyRed" })
+  highlight(0, "MiniFilesBorder", { link = "FloatBorder" })
+  highlight(0, "MiniFilesBorderModified", { link = "DiagnosticFloatingWarn" })
+  highlight(0, "MiniFilesCursorLine", { link = "MoonflyCurrentLine" })
+  highlight(0, "MiniFilesDirectory", { link = "Directory" })
+  highlight(0, "MiniFilesFile", { link = "MoonflyWhite" })
+  highlight(0, "MiniFilesNormal", { link = "NormalFloat" })
+  highlight(0, "MiniFilesTitle", { link = "FloatTitle" })
+  highlight(0, "MiniFilesTitleFocused", { link = "MoonflyEmeraldLine" })
+  highlight(0, "MiniIconsAzure", { link = "MoonflySky" })
+  highlight(0, "MiniIconsBlue", { link = "MoonflyBlue" })
+  highlight(0, "MiniIconsCyan", { link = "MoonflyTurquoise" })
+  highlight(0, "MiniIconsGreen", { link = "MoonflyGreen" })
+  highlight(0, "MiniIconsGrey", { link = "MoonflyGrey89" })
+  highlight(0, "MiniIconsOrange", { link = "MoonflyOrange" })
+  highlight(0, "MiniIconsPurple", { link = "MoonflyPurple" })
+  highlight(0, "MiniIconsRed", { link = "MoonflyCrimson" })
+  highlight(0, "MiniIconsYellow", { link = "MoonflyYellow" })
   highlight(0, "MiniIndentscopePrefix", { link = "MoonflyNoCombine" })
   highlight(0, "MiniIndentscopeSymbol", { link = "MoonflyWhite" })
   highlight(0, "MiniJump", { link = "SpellRare" })
+  highlight(0, "MiniJump2dDim", { link = "MoonflyGrey58" })
+  highlight(0, "MiniMapNormal", { link = "NormalFloat" })
+  highlight(0, "MiniMapSymbolCount", { link = "Special" })
+  highlight(0, "MiniMapSymbolLine", { link = "Title" })
+  highlight(0, "MiniMapSymbolView", { link = "Delimiter" })
+  highlight(0, "MiniNotifyBorder", { link = "FloatBorder" })
+  highlight(0, "MiniNotifyNormal", { link = "NormalFloat" })
+  highlight(0, "MiniNotifyTitle", { link = "FloatTitle" })
+  highlight(0, "MiniOperatorsExchangeFrom", { link = "IncSearch" })
+  highlight(0, "MiniPickBorder", { link = "FloatBorder" })
+  highlight(0, "MiniPickBorderBusy", { link = "DiagnosticFloatingWarn" })
+  highlight(0, "MiniPickBorderText", { link = "FloatTitle" })
+  highlight(0, "MiniPickHeader", { link = "DiagnosticFloatingHint" })
+  highlight(0, "MiniPickIconDirectory", { link = "Directory" })
+  highlight(0, "MiniPickIconFile", { link = "MiniPickNormal" })
+  highlight(0, "MiniPickMatchCurrent", { link = "MoonflyCurrentLine" })
+  highlight(0, "MiniPickMatchMarked", { link = "DiffAdd" })
+  highlight(0, "MiniPickMatchRanges", { link = "DiagnosticFloatingHint" })
+  highlight(0, "MiniPickNormal", { link = "NormalFloat" })
+  highlight(0, "MiniPickPreviewLine", { link = "CursorLine" })
+  highlight(0, "MiniPickPreviewRegion", { link = "IncSearch" })
+  highlight(0, "MiniPickPrompt", { link = "DiagnosticFloatingInfo" })
   highlight(0, "MiniStarterCurrent", { link = "MoonflyNoCombine" })
   highlight(0, "MiniStarterFooter", { link = "Title" })
   highlight(0, "MiniStarterHeader", { link = "MoonflyViolet" })
@@ -1001,7 +1112,14 @@ M.style = function()
   highlight(0, "MiniTestFail", { link = "MoonflyRed" })
   highlight(0, "MiniTestPass", { link = "MoonflyGreen" })
   highlight(0, "MiniTrailspace", { link = "MoonflyCrimsonMode" })
+  highlight(0, "MiniAnimateCursor", { reverse = true, nocombine = true })
+  highlight(0, "MiniHipatternsFixme", { fg = bg, bg = red })
+  highlight(0, "MiniHipatternsHack", { fg = bg, bg = yellow })
+  highlight(0, "MiniHipatternsNote", { fg = bg, bg = sky })
+  highlight(0, "MiniHipatternsTodo", { fg = bg, bg = turquoise })
   highlight(0, "MiniJump2dSpot", { fg = yellow, underline = true, nocombine = true })
+  highlight(0, "MiniJump2dSpotAhead", { fg = blue, bg = grey15, nocombine = true })
+  highlight(0, "MiniJump2dSpotUnique", { fg = emerald, underline = true, nocombine = true })
   highlight(0, "MiniStatuslineDevinfo", { bg = grey39, fg = white })
   highlight(0, "MiniStatuslineFileinfo", { bg = grey39, fg = white })
   highlight(0, "MiniStatuslineFilename", { bg = grey18, fg = grey62 })
@@ -1204,6 +1322,68 @@ M.style = function()
   highlight(0, "NvCheatsheetOrange", { bg = coral, fg = grey11 })
   highlight(0, "NvCheatsheetPurple", { link = "MoonflyPurpleMode" })
   highlight(0, "NvCheatsheetMagenta", { bg = violet, fg = grey11 })
+
+  -- fzf-lua
+  highlight(0, "FzfLuaBorder", { link = "FloatBorder" })
+  highlight(0, "FzfLuaBufFlagAlt", { link = "MoonflyTurquoise" })
+  highlight(0, "FzfLuaBufFlagCur", { link = "MoonflyOrange" })
+  highlight(0, "FzfLuaBufNr", { link = "MoonflyKhaki" })
+  highlight(0, "FzfLuaFzfHeader", { link = "MoonflyBlue" })
+  highlight(0, "FzfLuaFzfInfo", { link = "String" })
+  highlight(0, "FzfLuaFzfMarker", { link = "MoonflyCoral" })
+  highlight(0, "FzfLuaFzfPointer", { link = "MoonflyCrimson" })
+  highlight(0, "FzfLuaFzfPrompt", { link = "MoonflyBlue" })
+  highlight(0, "FzfLuaFzfSpinner", { link = "MoonflyEmerald" })
+  highlight(0, "FzfLuaHeaderBind", { link = "MoonflyGreen" })
+  highlight(0, "FzfLuaHeaderText", { link = "MoonflyTurquoise" })
+  highlight(0, "FzfLuaLiveSym", { link = "MoonflyGreen" })
+  highlight(0, "FzfLuaPathColNr", { link = "MoonflySky" })
+  highlight(0, "FzfLuaTabMarker", { link = "MoonflyKhaki" })
+  highlight(0, "FzfLuaTabTitle", { link = "MoonflySky" })
+  highlight(0, "FzfLuaTitle", { link = "FloatTitle" })
+end
+
+-- User customization of theme colors.
+--
+M.custom_colors = function(colors)
+  black = colors.black and colors.black or M.palette.black
+  white = colors.white and colors.white or M.palette.white
+  bg = colors.bg and colors.bg or M.palette.bg
+  grey0 = colors.grey0 and colors.grey0 or M.palette.grey0
+  grey1 = colors.grey1 and colors.grey1 or M.palette.grey1
+  grey89 = colors.grey89 and colors.grey89 or M.palette.grey89
+  grey70 = colors.grey70 and colors.grey70 or M.palette.grey70
+  grey62 = colors.grey62 and colors.grey62 or M.palette.grey62
+  grey58 = colors.grey58 and colors.grey58 or M.palette.grey58
+  grey50 = colors.grey50 and colors.grey50 or M.palette.grey50
+  grey39 = colors.grey39 and colors.grey39 or M.palette.grey39
+  grey30 = colors.grey30 and colors.grey30 or M.palette.grey30
+  grey27 = colors.grey27 and colors.grey27 or M.palette.grey27
+  grey23 = colors.grey23 and colors.grey23 or M.palette.grey23
+  grey18 = colors.grey18 and colors.grey18 or M.palette.grey18
+  grey15 = colors.grey15 and colors.grey15 or M.palette.grey15
+  grey11 = colors.grey11 and colors.grey11 or M.palette.grey11
+  grey7 = colors.grey7 and colors.grey7 or M.palette.grey7
+  khaki = colors.khaki and colors.khaki or M.palette.khaki
+  yellow = colors.yellow and colors.yellow or M.palette.yellow
+  orange = colors.orange and colors.orange or M.palette.orange
+  coral = colors.coral and colors.coral or M.palette.coral
+  orchid = colors.orchid and colors.orchid or M.palette.orchid
+  lime = colors.lime and colors.lime or M.palette.lime
+  green = colors.green and colors.green or M.palette.green
+  emerald = colors.emerald and colors.emerald or M.palette.emerald
+  turquoise = colors.turquoise and colors.turquoise or M.palette.turquoise
+  blue = colors.blue and colors.blue or M.palette.blue
+  sky = colors.sky and colors.sky or M.palette.sky
+  lavender = colors.lavender and colors.lavender or M.palette.lavender
+  purple = colors.purple and colors.purple or M.palette.purple
+  violet = colors.violet and colors.violet or M.palette.violet
+  cranberry = colors.cranberry and colors.cranberry or M.palette.cranberry
+  crimson = colors.crimson and colors.crimson or M.palette.crimson
+  red = colors.red and colors.red or M.palette.red
+  spring = colors.spring and colors.spring or M.palette.spring
+  mineral = colors.mineral and colors.mineral or M.palette.mineral
+  bay = colors.bay and colors.bay or M.palette.bay
 end
 
 return M
